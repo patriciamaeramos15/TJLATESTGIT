@@ -1,10 +1,7 @@
 package ramos.pat.com.vieweventsfragments;
 
 import android.app.Dialog;
-<<<<<<< Updated upstream
-=======
 import android.app.ProgressDialog;
->>>>>>> Stashed changes
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,10 +9,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-<<<<<<< Updated upstream
-=======
 import android.support.design.widget.Snackbar;
->>>>>>> Stashed changes
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -26,34 +20,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-<<<<<<< Updated upstream
-=======
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
->>>>>>> Stashed changes
 import android.widget.TextView;
 import android.widget.Toast;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-<<<<<<< Updated upstream
-=======
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-
-import okhttp3.ConnectionSpec;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
->>>>>>> Stashed changes
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -70,20 +43,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-<<<<<<< Updated upstream
 
-public class EventDetails extends AppCompatActivity {
-    private OkHttpClient client;
-    private Button attend;
-    Dialog dialog_help;
-    ImageView closeDialogHelp;
-    TextView txtContent1, txtContent2, txtContent3, txtContent4, txtContent5, txtContent6;
-    Animation animationUp, animationUp1, animationUp2, animationUp3, animationUp4,animationUp5, animationUp6;
-    Animation animationDown, animationDown1, animationDown2, animationDown3, animationDown4, animationDown5, animationDown6 ;
-    public String url = "https://93690df1.ngrok.io/thomasianjourney/Register/eventTime";
-
-
-=======
 public class EventDetails extends AppCompatActivity {
     private OkHttpClient client;
     private Button btnAttend;
@@ -93,31 +53,19 @@ public class EventDetails extends AppCompatActivity {
     Animation animationUp, animationUp1, animationUp2, animationUp3, animationUp4,animationUp5, animationUp6;
     Animation animationDown, animationDown1, animationDown2, animationDown3, animationDown4, animationDown5, animationDown6 ;
     TextView tv_date, tv_title, tv_description, tv_venue, tv_time, tv_point;
+
     RelativeLayout eventdetails;
-    public String url = "https://e63eeab9.ngrok.io/thomasianjourney/Register/eventTime";
-    public String eventUrl = "https://e63eeab9.ngrok.io/thomasianjourney/Register/eventDetails";
+    public String url = "https://thomasianjourney.website/Register/eventTime";
+    public String eventUrl = "https://thomasianjourney.website/Register/eventDetails";
     ProgressDialog dialog;
 
 
->>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dialog = new ProgressDialog(this);
         setContentView(R.layout.activity_eventdetails);
-<<<<<<< Updated upstream
-        attend = (Button) findViewById(R.id.attend);
-//        attend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openVerifyLoginCred();
-//            }
-//        });
-
-        dialog_help = new Dialog(this);
-
-=======
         tv_date = findViewById(R.id.date);
         tv_title = findViewById(R.id.title);
         tv_description = findViewById(R.id.description);
@@ -144,7 +92,6 @@ public class EventDetails extends AppCompatActivity {
 
         dialog_help = new Dialog(this);
 
->>>>>>> Stashed changes
         ActionBar actionBar = getSupportActionBar();
         actionBar.setElevation(0);
 
@@ -331,12 +278,9 @@ public class EventDetails extends AppCompatActivity {
             }
         });
 
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
         closeDialogHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -392,17 +336,11 @@ public class EventDetails extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 //            textView.setText(s);
-<<<<<<< Updated upstream
             openVerifyLoginCred(s);
-=======
-                openVerifyLoginCred(s);
->>>>>>> Stashed changes
 //            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
 
         }
     }
-<<<<<<< Updated upstream
-=======
     public class OkHttpHandler2 extends AsyncTask<String, Void, String> {
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -458,7 +396,6 @@ public class EventDetails extends AppCompatActivity {
         }
     }
 
->>>>>>> Stashed changes
 
     private String getDate(){
         DateFormat dfDate = new SimpleDateFormat("yyyy-MM-d");
@@ -469,10 +406,6 @@ public class EventDetails extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-<<<<<<< Updated upstream
-    public void openVerifyLoginCred(String s) {
-
-=======
     public void getEventDetails(String s){
         dialog.hide();
         if(!TextUtils.isEmpty(s)){
@@ -567,7 +500,6 @@ public class EventDetails extends AppCompatActivity {
     public void openVerifyLoginCred(String s)
     {
         RelativeLayout eventdetails = findViewById(R.id.eventdetails);
->>>>>>> Stashed changes
         if (!TextUtils.isEmpty(s)) {
 //            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
             try{
@@ -589,12 +521,6 @@ public class EventDetails extends AppCompatActivity {
                     Date current = formatter.parse(getDate());
 
                     if(current.before(start)){
-<<<<<<< Updated upstream
-                        Toast.makeText(this, "Not yet allowed", Toast.LENGTH_SHORT).show();
-                    }else if(current.after(end)){
-                        Toast.makeText(this, "Event not available.", Toast.LENGTH_SHORT).show();
-                    }else{
-=======
                         Snackbar snackbar =
                                 Snackbar.make(eventdetails, "Event not yet available.", Snackbar.LENGTH_LONG);
                         snackbar.show();
@@ -606,8 +532,11 @@ public class EventDetails extends AppCompatActivity {
                         Snackbar snackbar =
                                 Snackbar.make(eventdetails, "Event available.", Snackbar.LENGTH_LONG);
                         snackbar.show();
->>>>>>> Stashed changes
+                        Intent i = getIntent();
+                        String id = i.getExtras().getString("activityId");
+
                         Intent intent = new Intent(this, VerifyLoginCred.class);
+                        intent.putExtra("activityId", id);
                         startActivity(intent);
                         finish();
                     }
@@ -625,21 +554,14 @@ public class EventDetails extends AppCompatActivity {
 
     public void ScanAnim(View view) {
         if (view == findViewById(R.id.attend)) {
-<<<<<<< Updated upstream
-            OkHttpHandler okHttpHandler = new OkHttpHandler();
-            //DITO PAPASOK YUNG ID EVENT SA VIEW EVENTS
-            String activityId = "64";
-
-            okHttpHandler.execute(url, activityId);
-=======
-
+            btnAttend = findViewById(R.id.attend);
+            btnAttend.setClickable(false);
             OkHttpHandler okHttpHandler = new OkHttpHandler();
             //DITO PAPASOK YUNG ID NG EVENT SA VIEW EVENTS
             Intent i = getIntent();
             String id = i.getExtras().getString("activityId");
 
             okHttpHandler.execute(url, id);
->>>>>>> Stashed changes
             //check if current time is within time range
 //            if(currentTime >= startTime && currentTime <= endTime)
 

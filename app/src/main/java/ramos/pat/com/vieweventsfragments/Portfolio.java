@@ -81,13 +81,14 @@ public class Portfolio extends AppCompatActivity {
         mTablayout = findViewById(R.id.tabs);
         mViewPager = findViewById(R.id.container);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
         list = findViewById(R.id.list2);
 
         //create instance of class MyAdapter
-        adapter.AddFragment(new Year1(), "1ST YEAR");
-        adapter.AddFragment(new Year2(), "2ND YEAR");
-        adapter.AddFragment(new Year3(), "3RD YEAR");
-        adapter.AddFragment(new Year4(), "4TH YEAR");
+        adapter.AddFragment(new Year1(), "MUST-DO");
+        adapter.AddFragment(new Year2(), "GOOD TO DO");
+        adapter.AddFragment(new Year3(), "DON'T MISS");
+        adapter.AddFragment(new Year4(), "GOOD TO BECOME");
 //        MyAdapter adapter = new MyAdapter(this, dates, titles, descriptions);
         mViewPager.setAdapter(adapter);
         mTablayout.setupWithViewPager(mViewPager);
@@ -96,7 +97,7 @@ public class Portfolio extends AppCompatActivity {
         mTablayout.getTabAt(1);
         mTablayout.getTabAt(2);
         mTablayout.getTabAt(3);
-
+        mViewPager.setOffscreenPageLimit(3);
 
 // to set icon for tabs
 //        tablayout.getTabAt(0).setIcon(R.drawable.ic_call);

@@ -37,6 +37,9 @@ public class VerifyLoginCred extends AppCompatActivity {
         vtvtwo.startAnimation(myanim);
 
         final Intent i = new Intent(this,VerLoginCredSuc.class);
+        Intent intent = getIntent();
+        String id = intent.getExtras().getString("activityId");
+        i.putExtra("activityId", id);
         Thread timer = new Thread() {
             public void run () {
                 try {

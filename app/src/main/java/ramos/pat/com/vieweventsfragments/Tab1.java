@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,13 +47,10 @@ public class Tab1 extends Fragment {
     String dates [] = {"Feb 26", "Date 00", "Date 00", "Date 00", "Date 00", "Date 00", "Date 00", "Date 00"};
     String titles[] = {"Science Week Opening Ceremony", "Title Two", "Title Three", "Title Four","Title Five","Title Six","Title Seven","Title Eight"};
     String descriptions[] = {"Medicine Auditorium", "Description Two...", "Description Three...", "Description Four...","Description Five...","Description Six...","Description Seven...","Description Eight..."};
-<<<<<<< Updated upstream
-=======
-    public String url = "https://e63eeab9.ngrok.io/thomasianjourney/Register/insertEvents";
+    public String url = "https://thomasianjourney.website/Register/insertEvents";
     public List<Contact> listContact = new ArrayList<>();
     public ProgressDialog dialog;
->>>>>>> Stashed changes
-
+    LinearLayout empty;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -145,6 +143,8 @@ public class Tab1 extends Fragment {
 //            }
 //            textView.setText(s);
             insertList(s);
+//            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -179,7 +179,9 @@ public class Tab1 extends Fragment {
                 }
 
             }catch(Exception err){
-                Toast.makeText(getContext(), "No events found", Toast.LENGTH_LONG).show();
+                mRecyclerView.setVisibility(View.GONE);
+                empty = getActivity().findViewById(R.id.empty);
+                empty.setVisibility(View.VISIBLE);
             }
         }
 

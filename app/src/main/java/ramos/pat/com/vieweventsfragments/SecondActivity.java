@@ -97,7 +97,6 @@ public class SecondActivity extends AppCompatActivity {
         });
 
         dialog_help = new Dialog(this);
-<<<<<<< Updated upstream
 
         img_help = findViewById(R.id.img_help);
         img_help.setOnClickListener(new View.OnClickListener() {
@@ -131,41 +130,6 @@ public class SecondActivity extends AppCompatActivity {
         TextView txtTitle1 = (TextView) dialog_help.findViewById(R.id.content_text1);
         txtContent1.setVisibility(View.GONE);
 
-=======
-
-        img_help = findViewById(R.id.img_help);
-        img_help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowDialogHelp();
-
-            }
-        });
-    }
-
-    public void ShowDialogHelp() {
-        dialog_help.setContentView(R.layout.dialog_help);
-        closeDialogHelp = (ImageView) dialog_help.findViewById(R.id.closeDialogHelp);
-//        title_text1 = (TextView) dialog_help.findViewById(R.id.title_text1);
-//        title_text2 = (TextView) dialog_help.findViewById(R.id.title_text2);
-//        title_text3 = (TextView) dialog_help.findViewById(R.id.title_text3);
-//        title_text4 = (TextView) dialog_help.findViewById(R.id.title_text4);
-//        title_text5 = (TextView) dialog_help.findViewById(R.id.title_text5);
-//        title_text6 = (TextView) dialog_help.findViewById(R.id.title_text6);
-//        content_text1 = (TextView) dialog_help.findViewById(R.id.content_text1);
-//        content_text2 = (TextView) dialog_help.findViewById(R.id.content_text2);
-//        content_text3 = (TextView) dialog_help.findViewById(R.id.content_text3);
-//        content_text4 = (TextView) dialog_help.findViewById(R.id.content_text4);
-//        content_text5 = (TextView) dialog_help.findViewById(R.id.content_text5);
-//        content_text6 = (TextView) dialog_help.findViewById(R.id.content_text6);
-//        txthelp = (TextView) dialog_help.findViewById(R.id.txthelp);
-//        scrollhelp = (NestedScrollView) dialog_help.findViewById(R.id.scrollhelp);
-//        layouthelp = (LinearLayout) dialog_help.findViewById(R.id.layouthelp);
-        txtContent1 = (TextView) dialog_help.findViewById(R.id.title_text1);
-        TextView txtTitle1 = (TextView) dialog_help.findViewById(R.id.content_text1);
-        txtContent1.setVisibility(View.GONE);
-
->>>>>>> Stashed changes
         animationUp1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
         animationDown1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
 
@@ -224,7 +188,6 @@ public class SecondActivity extends AppCompatActivity {
                     txtContent3.setVisibility(View.VISIBLE);
                     txtContent3.startAnimation(animationDown3);
                 }
-<<<<<<< Updated upstream
             }
         });
 
@@ -250,33 +213,6 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-=======
-            }
-        });
-
-        // help 4
-        txtContent4 = (TextView) dialog_help.findViewById(R.id.title_text4);
-        TextView txtTitle4 = (TextView) dialog_help.findViewById(R.id.content_text4);
-        txtContent4.setVisibility(View.GONE);
-
-        animationUp4 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
-        animationDown4 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
-
-        txtTitle4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(txtContent4.isShown()){
-                    txtContent4.setVisibility(View.GONE);
-                    txtContent4.startAnimation(animationUp4);
-                }
-                else{
-                    txtContent4.setVisibility(View.VISIBLE);
-                    txtContent4.startAnimation(animationDown4);
-                }
-            }
-        });
-
->>>>>>> Stashed changes
         // help 5
         txtContent5 = (TextView) dialog_help.findViewById(R.id.title_text5);
         TextView txtTitle5 = (TextView) dialog_help.findViewById(R.id.content_text5);
@@ -334,19 +270,6 @@ public class SecondActivity extends AppCompatActivity {
         dialog_help.show();
 
 
-<<<<<<< Updated upstream
-    }
-
-    public void EventsAnim(View view) {
-        if (view == findViewById(R.id.eventId)) {
-            //open viewevents
-            startActivity(new Intent(this, MainActivity.class));
-            //add animation
-            Animatoo.animateCard(this);
-        }
-    }
-
-=======
     }
 
     public void EventsAnim(View view) {
@@ -359,11 +282,10 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
->>>>>>> Stashed changes
     public void PortAnim(View view) {
         if (view == findViewById(R.id.portId)) {
             //open viewevents
-            startActivity(new Intent(this, Portfolio.class));
+            startActivity(new Intent(this, MenuPortfolio.class));
             //add animation
             Animatoo.animateCard(this);
         }

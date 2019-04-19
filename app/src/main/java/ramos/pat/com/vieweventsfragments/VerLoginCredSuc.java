@@ -8,7 +8,10 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +28,21 @@ import com.google.gson.JsonObject;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.Arrays;
+
+import okhttp3.ConnectionSpec;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class VerLoginCredSuc extends AppCompatActivity {
     private Button contscanbtn;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private LottieAnimationView LottieCheck;
-
+        public String url = "https://thomasianjourney.website/Register/insertAttended";
     Dialog dialog_errorqr;
     Button okbtn;
     TextView titleErrorQR, exErrorRQ;
@@ -120,19 +132,22 @@ public class VerLoginCredSuc extends AppCompatActivity {
 //                Toast.makeText(this, "Something was scanned", Toast.LENGTH_LONG).show();
                 String contents = data.getStringExtra("SCAN_RESULT");
                 String format = data.getStringExtra("SCAN_RESULT_FORMAT");
-
+                Intent intent = getIntent();
+                String id = intent.getExtras().getString("activityId");
 
                 String[]  info = contents.split(";");
 
-
-                if(info[0].equals("sana") && info[1].equals("sana") && info[2].equals("hehe")){
-                    Toast.makeText(this, contents,Toast.LENGTH_LONG).show();
+//                && info[1].equals("sana") && info[2].equals("hehe")
+                if(info[0].equals(id)){
+                    String accountId = "1";
+                    String yearLevel = "2";
+                    OkHttpHandler okHttpHandler = new OkHttpHandler();
+                    okHttpHandler.execute(url, accountId ,id, yearLevel);
                     Intent i = new Intent(VerLoginCredSuc.this, ScanSuccess.class);
                     startActivity(i);
                     finish();
 
                 }else{
-
                     //BOSS DITO MO ILAGAY YUNG DIALOG BOX PAG DI NARERECOGNIZE YUNG QRCODE
 
                     dialog_errorqr = new Dialog(this);
@@ -161,6 +176,53 @@ public class VerLoginCredSuc extends AppCompatActivity {
         }
         else {
             super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+    public class OkHttpHandler extends AsyncTask<String, Void, String> {
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS))
+                .build();
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                RequestBody requestBody = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM)
+                        .addFormDataPart("accountId", params[1])
+                        .addFormDataPart("activityId", params[2])
+                        .addFormDataPart("yearLevel", params[3])
+                        .build();
+
+                Request.Builder builder = new Request.Builder();
+                builder.url(params[0])
+                        .post(requestBody);
+                Request request = builder.build();
+
+                Response response = client.newCall(request).execute();
+
+                System.out.print("Response: " + response.code());
+
+                if (response.isSuccessful()) {
+
+                    return response.body().string();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+//            textView.setText(s);
+//            Toast.makeText(EventDetails.this, ""+s, Toast.LENGTH_SHORT).show();
+
         }
     }
 

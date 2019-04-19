@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         // Create list view
         mTablayout = findViewById(R.id.tabs);
         mViewPager = findViewById(R.id.container);
+        mViewPager.setOffscreenPageLimit(2);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         list = findViewById(R.id.list1);
 

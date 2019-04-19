@@ -53,10 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     Context mContext;
     List<Contact> mData;
-<<<<<<< Updated upstream
-=======
     String id;
->>>>>>> Stashed changes
 
     public RecyclerViewAdapter(Context context, List<Contact> data) {
         mContext = context;
@@ -77,16 +74,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 //INSERT HERE CODE FOR EVENT DETAILS
-<<<<<<< Updated upstream
-                Toast.makeText(mContext, "Hello", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(mContext, EventDetails.class);
-=======
 
                 String id = vHolder.activityId.getText().toString().trim();
                 Intent i = new Intent(mContext, EventDetails.class);
                 i.putExtra("activityId", id);
 //                Toast.makeText(mContext, ""+id, Toast.LENGTH_SHORT).show();
->>>>>>> Stashed changes
                 mContext.startActivity(i);
 
             }
@@ -94,14 +86,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         vHolder.date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< Updated upstream
-                Toast.makeText(mContext, "Hello", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(mContext, EventDetails.class);
-=======
                 String id = vHolder.activityId.getText().toString().trim();
                 Intent i = new Intent(mContext, EventDetails.class);
+
                 i.putExtra("activityId", id);
->>>>>>> Stashed changes
                 mContext.startActivity(i);
 
             }
@@ -192,10 +180,32 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
             });
 
-        }else{
-            myViewHolder.attended.setText("Attend event");
+        }else if(status.equals("upcoming")){
+            myViewHolder.attended.setText("Event Not Yet Available");
+            //Dito mo fix yung color
+            myViewHolder.attended.setTextColor(Color.parseColor("#FF8C00"));
+        }else if(status.equals("available")){
+            myViewHolder.attended.setText("Event Available");
             //Dito mo fix yung color
             myViewHolder.attended.setTextColor(Color.parseColor("#008000"));
+        }else if(status.equals("cancelled")){
+            myViewHolder.attended.setText("Cancelled");
+            myViewHolder.attended.setAllCaps(true);
+            myViewHolder.attended.setTextColor(Color.parseColor("#B22222"));
+            myViewHolder.item_contact.setClickable(false);
+            myViewHolder.date.setClickable(false);
+            myViewHolder.item_contact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, "Event is Cancelled", Toast.LENGTH_LONG).show();
+                }
+            });
+            myViewHolder.date.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, "Event is Cancelled", Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
 
@@ -214,11 +224,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView tv_date;
         private ImageView img;
         private Button date;
-<<<<<<< Updated upstream
-=======
         private TextView activityId;
         private TextView attended;
->>>>>>> Stashed changes
 
 
         public MyViewHolder(View itemView){
@@ -229,10 +236,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_name = itemView.findViewById(R.id.name_title);
             tv_desc = itemView.findViewById(R.id.desc);
             tv_date = itemView.findViewById(R.id.date);
-<<<<<<< Updated upstream
-=======
             attended = itemView.findViewById(R.id.attended);
->>>>>>> Stashed changes
 
         }
     }

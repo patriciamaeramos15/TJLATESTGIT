@@ -73,4 +73,7 @@ public class Contact {
         this.date = date;
 
     }
+    public Contact(String id){
+        this.id = id;
+    }
 }

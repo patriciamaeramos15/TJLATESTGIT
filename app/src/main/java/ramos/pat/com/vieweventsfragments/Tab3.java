@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,9 +45,10 @@ public class Tab3 extends Fragment {
     String dates [] = {"Feb 26", "Date 00", "Date 00", "Date 00", "Date 00", "Date 00", "Date 00", "Date 00"};
     String titles[] = {"Science Week Opening Ceremony", "Title Two", "Title Three", "Title Four","Title Five","Title Six","Title Seven","Title Eight"};
     String descriptions[] = {"Medicine Auditorium", "Description Two...", "Description Three...", "Description Four...","Description Five...","Description Six...","Description Seven...","Description Eight..."};
-    public String url = "https://e63eeab9.ngrok.io/thomasianjourney/Register/insertAttendedEvents";
+    public String url = "https://thomasianjourney.website/Register/insertAttendedEvents";
     public List<Contact> listContact = new ArrayList<>();
     public ProgressDialog dialog;
+    LinearLayout empty;
 
 
     @Override
@@ -75,7 +77,7 @@ public class Tab3 extends Fragment {
 //        }
 
         dialog = new ProgressDialog(getContext());
-
+        //intent mo sa lahat
         String collegeId = "1";
         String yearLevel = "1";
         String accountId = "1";
@@ -163,7 +165,7 @@ public class Tab3 extends Fragment {
                         String activityName = dataObject.get("activityName").getAsString();
                         String eventDate = dataObject.get("eventDate").getAsString();
                         String activityId = dataObject.get("activityId").getAsString();
-                        String status = "none";
+                        String status = "";
                         listContact.add(new Contact(activityName, eventVenue, eventDate, activityId, status));
                     }
 
@@ -176,7 +178,10 @@ public class Tab3 extends Fragment {
                 }
 
             }catch(Exception err){
-                Toast.makeText(getContext(), err+"", Toast.LENGTH_LONG).show();
+                mRecyclerView.setVisibility(View.GONE);
+                empty = getActivity().findViewById(R.id.empty);
+                empty.setVisibility(View.VISIBLE);
+
             }
         }
 

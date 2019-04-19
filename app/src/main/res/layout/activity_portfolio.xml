@@ -26,44 +26,28 @@
                 android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-                android:text="1ST YEAR"
-=======
                 android:text="MUST-DO"
->>>>>>> Stashed changes
                 android:fontFamily="@font/poppinsmedium"/>
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-                android:text="2ND YEAR"
-=======
                 android:text="GOOD TO DO"
->>>>>>> Stashed changes
                 android:fontFamily="@font/poppinsmedium"/>
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-                android:text="3RD YEAR"
-=======
                 android:text="DON'T MISS"
->>>>>>> Stashed changes
                 android:fontFamily="@font/poppinsmedium"/>
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-                android:text="4TH YEAR"
-=======
                 android:text="GOOD TO BECOME"
->>>>>>> Stashed changes
                 android:fontFamily="@font/poppinsmedium"/>
 
         </android.support.design.widget.TabLayout>

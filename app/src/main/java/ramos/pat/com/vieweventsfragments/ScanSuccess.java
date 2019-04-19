@@ -65,10 +65,7 @@ public class ScanSuccess extends AppCompatActivity {
             startActivity(new Intent(this, SecondActivity.class));
             //add animation
             Animatoo.animateCard(this);
-<<<<<<< Updated upstream
-=======
             finish();
->>>>>>> Stashed changes
         }
     }
 
@@ -78,10 +75,7 @@ public class ScanSuccess extends AppCompatActivity {
             startActivity(new Intent(this, Portfolio.class));
             //add animation
             Animatoo.animateCard(this);
-<<<<<<< Updated upstream
-=======
             finish();
->>>>>>> Stashed changes
         }
     }
 }
